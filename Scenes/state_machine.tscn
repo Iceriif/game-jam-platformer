@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4ksqspddgtu6"]
+
+[ext_resource type="Script" uid="uid://dfu5s1p3pgvyt" path="res://Scripts/Playeridle.gd" id="1_wbto3"]
+[ext_resource type="Script" uid="uid://dm78wq5l4cgp7" path="res://Scripts/Playerjump.gd" id="2_ah856"]
+[ext_resource type="Script" uid="uid://ck6xdkxvc88mu" path="res://Scripts/Playermove.gd" id="3_ahvgy"]
+
+[node name="State_machine" type="Node"]
+script = ExtResource("1_wbto3")
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("2_ah856")
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource("3_ahvgy")
+
+[node name="Dash" type="Node" parent="."]
+
+[node name="Fall" type="Node" parent="."]

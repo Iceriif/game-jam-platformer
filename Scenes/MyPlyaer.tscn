@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxhnw1ievx62y"]
+
+[ext_resource type="Script" uid="uid://dfu5s1p3pgvyt" path="res://Scripts/Playeridle.gd" id="1_mlfbc"]
+[ext_resource type="Script" uid="uid://dm78wq5l4cgp7" path="res://Scripts/Playerjump.gd" id="2_l1nhl"]
+[ext_resource type="Script" uid="uid://ck6xdkxvc88mu" path="res://Scripts/Playermove.gd" id="3_1sahg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_onrkg"]
+size = Vector2(20, 20)
+
+[node name="player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_onrkg")
+
+[node name="State_machine" type="Node" parent="."]
+script = ExtResource("1_mlfbc")
+
+[node name="Jump" type="Node" parent="State_machine"]
+script = ExtResource("2_l1nhl")
+
+[node name="Move" type="Node" parent="State_machine"]
+script = ExtResource("3_1sahg")
+
+[node name="Dash" type="Node" parent="State_machine"]
+
+[node name="Fall" type="Node" parent="State_machine"]
