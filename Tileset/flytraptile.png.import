@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8knom65b41c3"
-path="res://.godot/imported/grasstileset.png-5c863dbba461e0fd5510b60d33a3b6a2.ctex"
+uid="uid://bf4g1m8wx1ysw"
+path="res://.godot/imported/flytraptile.png-658dbb56426e8d340f250aeddd1333ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset/grasstileset.png"
-dest_files=["res://.godot/imported/grasstileset.png-5c863dbba461e0fd5510b60d33a3b6a2.ctex"]
+source_file="res://Tileset/flytraptile.png"
+dest_files=["res://.godot/imported/flytraptile.png-658dbb56426e8d340f250aeddd1333ea.ctex"]
 
 [params]
 

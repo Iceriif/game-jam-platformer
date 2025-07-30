@@ -128,7 +128,7 @@ func perform_state_actions(delta):
 				velocity.y = 0
 			
 		States.Idle:
-			velocity.x = lerp(velocity.x, 0.0, 0.3)
+			velocity.x = 0
 			if lastdir == Vector2.LEFT:
 				animated_sprite_2d.scale.x = -1
 				animated_sprite_2d.play("Idle")
