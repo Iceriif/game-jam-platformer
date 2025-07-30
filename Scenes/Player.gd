@@ -17,7 +17,7 @@ enum States {
 var movedir : Vector2
 @export var gravity = 2100
 const dashspd = 700
-const termvelocity : float = 1300
+const termvelocity : float = 650
 
 #jumping
 @export var jumpvel = 0
@@ -58,7 +58,7 @@ func handle_state_transitions():
 	if hasjump == 2:
 		jumpvel = -460
 	elif hasjump == 1:
-		jumpvel = -360
+		jumpvel = -420
 	
 		
 	if Input.is_action_just_pressed("ui_left"):
