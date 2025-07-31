@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://d0fm5lhyv7721"]
+[gd_scene load_steps=80 format=4 uid="uid://d0fm5lhyv7721"]
 
 [ext_resource type="Script" uid="uid://bqofrmdoryo5a" path="res://Scenes/Player.gd" id="1_a02cp"]
 [ext_resource type="Texture2D" uid="uid://dnobb4yt538xl" path="res://Sprites/JadeDash.png" id="2_5ukr8"]
@@ -6,12 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cpj6ve3oeo2bo" path="res://Sprites/IdolGreenDude-Sheet.png" id="2_go701"]
 [ext_resource type="Texture2D" uid="uid://dbmvrbv2pbwsa" path="res://Sprites/WalkingGreenDude-Sheet.png" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://5l6p63n1t460" path="res://Sprites/JumpJade.png" id="3_8j60k"]
+[ext_resource type="Texture2D" uid="uid://dlf04pcj8pieh" path="res://Sprites/wallstick.png" id="6_e0ngr"]
 [ext_resource type="Script" uid="uid://kwvxhj1thl2k" path="res://Scenes/Camera.gd" id="7_k7acu"]
 [ext_resource type="Texture2D" uid="uid://cgxkdsy34wyig" path="res://Tileset/TownTileset.png" id="7_o06y3"]
 [ext_resource type="Texture2D" uid="uid://cf6um0tmjrn6n" path="res://Tileset/grasstileset.png" id="9_5v1tr"]
 [ext_resource type="Texture2D" uid="uid://bf4g1m8wx1ysw" path="res://Tileset/flytraptile.png" id="10_0fj1v"]
 [ext_resource type="Texture2D" uid="uid://mxaqjihar7no" path="res://Tileset/sky.png" id="11_ikia7"]
 [ext_resource type="Texture2D" uid="uid://dbjydhmkd8jr4" path="res://Tileset/BackroundMounatins.png" id="12_7yui6"]
+[ext_resource type="Script" uid="uid://cxrmf6nyh501j" path="res://Scenes/resin.gd" id="13_c5t2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fj1v"]
 size = Vector2(6.66666, 12)
@@ -95,6 +97,38 @@ region = Rect2(60, 0, 30, 30)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cojt"]
 atlas = ExtResource("3_8j60k")
 region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0ikl"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(0, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opbav"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(16, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coyub"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(32, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ochwf"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(48, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5wkl"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(64, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r74th"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(80, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04jkj"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(96, 0, 16, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkcvt"]
+atlas = ExtResource("6_e0ngr")
+region = Rect2(112, 0, 16, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fj1v"]
 atlas = ExtResource("3_5a7ea")
@@ -208,6 +242,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_r0ikl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opbav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coyub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ochwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5wkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r74th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04jkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkcvt")
+}],
+"loop": true,
+"name": &"Stick",
+"speed": 6.4
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0fj1v")
 }, {
 "duration": 1.0,
@@ -232,6 +295,9 @@ animations = [{
 "name": &"Walking",
 "speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ngr"]
+size = Vector2(3, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t2t4p"]
 texture = ExtResource("7_o06y3")
@@ -6420,7 +6486,7 @@ sources/1 = SubResource("TileSetAtlasSource_yq1aw")
 [node name="World" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(161, 164)
+position = Vector2(1286, -332)
 script = ExtResource("1_a02cp")
 metadata/_edit_group_ = true
 
@@ -6440,7 +6506,8 @@ metadata/_edit_use_anchors_ = true
 z_index = 4096
 position = Vector2(-0.333328, 1.33332)
 sprite_frames = SubResource("SpriteFrames_0fj1v")
-animation = &"Idle"
+animation = &"Stick"
+frame_progress = 0.965171
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 z_index = 1
@@ -6454,6 +6521,15 @@ drag_top_margin = 0.0
 drag_bottom_margin = 0.1
 editor_draw_drag_margin = true
 script = ExtResource("7_k7acu")
+
+[node name="Resin" type="Area2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("13_c5t2i")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Resin"]
+position = Vector2(1313, -176)
+shape = SubResource("RectangleShape2D_e0ngr")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = 1000
@@ -6547,3 +6623,43 @@ z_index = -4096
 position = Vector2(702, 67)
 scale = Vector2(2.01125, 2.06944)
 texture = ExtResource("12_7yui6")
+
+[node name="Resin2" type="Area2D" parent="."]
+position = Vector2(207, 112)
+script = ExtResource("13_c5t2i")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Resin2"]
+position = Vector2(1313, -176)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[node name="Resin3" type="Area2D" parent="."]
+position = Vector2(96, 112)
+script = ExtResource("13_c5t2i")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Resin3"]
+position = Vector2(1313, -176)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[node name="Resin4" type="Area2D" parent="."]
+position = Vector2(206, 191)
+script = ExtResource("13_c5t2i")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Resin4"]
+position = Vector2(1313, -176)
+shape = SubResource("RectangleShape2D_e0ngr")
+
+[connection signal="body_entered" from="Resin" to="Player" method="_on_resin_body_entered"]
+[connection signal="body_entered" from="Resin" to="Resin" method="_on_body_entered"]
+[connection signal="body_exited" from="Resin" to="Resin" method="_on_body_exited"]
+[connection signal="body_entered" from="Resin2" to="Player" method="_on_resin_body_entered"]
+[connection signal="body_entered" from="Resin2" to="Resin2" method="_on_body_entered"]
+[connection signal="body_exited" from="Resin2" to="Resin2" method="_on_body_exited"]
+[connection signal="body_entered" from="Resin3" to="Player" method="_on_resin_body_entered"]
+[connection signal="body_entered" from="Resin3" to="Resin3" method="_on_body_entered"]
+[connection signal="body_exited" from="Resin3" to="Resin3" method="_on_body_exited"]
+[connection signal="body_entered" from="Resin4" to="Player" method="_on_resin_body_entered"]
+[connection signal="body_entered" from="Resin4" to="Resin4" method="_on_body_entered"]
+[connection signal="body_exited" from="Resin4" to="Resin4" method="_on_body_exited"]

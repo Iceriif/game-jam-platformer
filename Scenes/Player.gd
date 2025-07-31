@@ -7,7 +7,7 @@ enum States {
 	Jump,
 	fall,
 	Idle,
-	Dashend
+	Stick
 }
 
 @export var currentState = States.Idle
@@ -25,7 +25,6 @@ const jumpdecel = 0.4
 var hasjump = 2
 var isjumping = false
 
-
 #Dashing
 var isdashing = false
 var dashtimer = 0.0
@@ -38,23 +37,27 @@ var dashcd = 0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var camera = $Camera2D
 
+var forcedstate = false
+
+func _ready():
+	add_to_group("player")
+
 
 func _physics_process(delta):
+	if dashtimer <= 0:
+		isdashing = false
 	handle_state_transitions()
 	perform_state_actions(delta)
 	move_and_slide()
-	
 	if dashcd > 0 and is_on_floor():
 		dashcd -= delta
 		
 	if velocity.y >= 1300:
 		velocity.y = termvelocity
-
 	state_label.text = States.keys()[currentState]
-	print(dashcd)
-
 func handle_state_transitions():
-	
+	if forcedstate:
+		return
 	if hasjump == 2:
 		jumpvel = -460
 	elif hasjump == 1:
@@ -162,8 +165,9 @@ func perform_state_actions(delta):
 				if lastdir == Vector2.ZERO:
 					animated_sprite_2d.scale.x = 1
 					animated_sprite_2d.play("Jump")
+			
 					
-					
+				
 				
 			velocity.x = movedir.x * movespeed
 			velocity.y += gravity * delta
@@ -216,6 +220,42 @@ func perform_state_actions(delta):
 				isdashing = false
 				velocity = velocity.move_toward(Vector2.ZERO, 15000 * delta)
 				currentState = States.Idle
+		States.Stick:
+			dashcd = 0
+			dashtimer = 0
+			movedir.x = Input.get_axis("ui_left", "ui_right")
+			dashdir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+			velocity.y = 0
+			velocity.x = 0
+			if Input.is_action_pressed("ui_left"):
+				lastdir = Vector2.LEFT
+				animated_sprite_2d.scale.x = -1
+				animated_sprite_2d.play("Stick")
+			if Input.is_action_pressed("ui_right"):
+				lastdir = Vector2.RIGHT
+				animated_sprite_2d.scale.x = 1
+				animated_sprite_2d.play("Stick")
+			if lastdir == Vector2.LEFT:
+					animated_sprite_2d.scale.x = -1
+					animated_sprite_2d.play("Stick")
+					if lastdir == Vector2.RIGHT:
+						animated_sprite_2d.scale.x = 1
+						animated_sprite_2d.play("Stick")
+
+			if Input.is_action_just_pressed("ui_accept"):
+				animated_sprite_2d.play("Jump")
+				forcedstate = false
+				velocity.y = jumpvel
+				currentState = States.Jump
+			if Input.is_action_just_pressed("dash") and not isdashing and dashcd <= 0:
+				currentState = States.Dash
+				dashtimer = dashtime
+				forcedstate = false
+				isdashing = true
+				dashcd = dashcdtime
+				lastdir = movedir
+		
+			
 			
 			
 				
